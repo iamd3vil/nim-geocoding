@@ -4,6 +4,6 @@ version = "0.1.0"
 author = "Sarat Chandra <saratchandra.outlook.com>"
 description = "Library for Google Maps geocoding API."
 license = "MIT"
-
+bin = "geocoding"
 [Deps]
 Requires: "nim >=0.10.0"
