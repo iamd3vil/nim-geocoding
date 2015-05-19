@@ -1,4 +1,4 @@
-import json, os, httpclient, cgi
+import json, os, httpclient, cgi, strutils
     
 
 proc coordinates*(address: string): seq[float] = 
@@ -37,6 +37,22 @@ proc formattedAddress*(address: string, apiKey: string): string =
     var parsed_json = parseJson(response_json)
     return getStr(parsed_json["results"][0]["formatted_address"])
      
+proc reverseGeocode*(lat: float, lng: float): string = 
+    ## Takes latitude and longitude, returns a formatted address.
+    var baseurl = "https://maps.googleapis.com/maps/api/geocode/json"
+    var path = "$#?latlng=$#,$#&sensor=false".format(baseurl, encodeUrl($lat), encodeUrl($lng))
+    var response_json = getContent(path)
+    var parsed_json = parseJson(response_json)
+    return getStr(parsed_json["results"][0]["formatted_address"])
+
+proc reverseGeocode*(lat: float, lng: float, apiKey: string): string = 
+    ## Takes latitude,longitude and an API key, returns a formatted address.
+    var baseurl = "https://maps.googleapis.com/maps/api/geocode/json"
+    var path = "$#?latlng=$#,$#&sensor=false&key=$#".format(baseurl, encodeUrl($lat), encodeUrl($lng), encodeUrl(apiKey))
+    var response_json = getContent(path)
+    var parsed_json = parseJson(response_json)
+    return getStr(parsed_json["results"][0]["formatted_address"])
+
 if isMainModule:
     if paramStr(1) == "-c":
         echo(coordinates(paramStr(2)))
