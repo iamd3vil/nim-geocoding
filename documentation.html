@@ -1160,8 +1160,12 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#coordinates,string"
     title="coordinates(address: string): seq[float]"><wbr />coordinates</a></li>
+  <li><a class="reference" href="#coordinates,string,string"
+    title="coordinates(address: string; apiKey: string): seq[float]"><wbr />coordinates</a></li>
   <li><a class="reference" href="#formattedAddress,string"
     title="formattedAddress(address: string): string"><wbr />formatted<wbr />Address</a></li>
+  <li><a class="reference" href="#formattedAddress,string,string"
+    title="formattedAddress(address: string; apiKey: string): string"><wbr />formatted<wbr />Address</a></li>
 
   </ul>
 </li>
@@ -1186,11 +1190,27 @@ dt pre > span.Operator ~ span.Identifier, dt pre > span.Operator ~ span.Operator
 Takes an address and returns a sequence of latitutde and longitude
 
 </dd>
+<dt id="coordinates"><a name="coordinates,string,string"></a><pre><span class="Keyword">proc</span> <span class="Identifier">coordinates</span><span class="Other">(</span><span class="Identifier">address</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">apiKey</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">float</span><span class="Other">]</span> <span class="Other">{.</span><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span>
+    <span class="Identifier">ValueError</span><span class="Other">,</span> <span class="Identifier">OSError</span><span class="Other">,</span> <span class="Identifier">HttpRequestError</span><span class="Other">,</span> <span class="Identifier">OverflowError</span><span class="Other">,</span> <span class="Identifier">TimeoutError</span><span class="Other">,</span> 
+    <span class="Identifier">ProtocolError</span><span class="Other">,</span> <span class="Identifier">Exception</span><span class="Other">,</span> <span class="Identifier">JsonParsingError</span><span class="Other">]</span><span class="Other">,</span> 
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadIOEffect</span><span class="Other">,</span> <span class="Identifier">WriteIOEffect</span><span class="Other">,</span> <span class="Identifier">TimeEffect</span><span class="Other">]</span><span class="Other">.}</span></pre></dt>
+<dd>
+This proc takes an address and the API Key and returns a sequence of latitude and longitude
+
+</dd>
 <dt id="formattedAddress"><a name="formattedAddress,string"></a><pre><span class="Keyword">proc</span> <span class="Identifier">formattedAddress</span><span class="Other">(</span><span class="Identifier">address</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Other">{.</span><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">,</span> <span class="Identifier">OSError</span><span class="Other">,</span> 
     <span class="Identifier">HttpRequestError</span><span class="Other">,</span> <span class="Identifier">OverflowError</span><span class="Other">,</span> <span class="Identifier">TimeoutError</span><span class="Other">,</span> <span class="Identifier">ProtocolError</span><span class="Other">,</span> <span class="Identifier">Exception</span><span class="Other">,</span> 
     <span class="Identifier">JsonParsingError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadIOEffect</span><span class="Other">,</span> <span class="Identifier">WriteIOEffect</span><span class="Other">,</span> <span class="Identifier">TimeEffect</span><span class="Other">]</span><span class="Other">.}</span></pre></dt>
 <dd>
 Takes an address and returns a nicely formatted address.
+
+</dd>
+<dt id="formattedAddress"><a name="formattedAddress,string,string"></a><pre><span class="Keyword">proc</span> <span class="Identifier">formattedAddress</span><span class="Other">(</span><span class="Identifier">address</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">apiKey</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Other">{.</span><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span>
+    <span class="Identifier">ValueError</span><span class="Other">,</span> <span class="Identifier">OSError</span><span class="Other">,</span> <span class="Identifier">HttpRequestError</span><span class="Other">,</span> <span class="Identifier">OverflowError</span><span class="Other">,</span> <span class="Identifier">TimeoutError</span><span class="Other">,</span> 
+    <span class="Identifier">ProtocolError</span><span class="Other">,</span> <span class="Identifier">Exception</span><span class="Other">,</span> <span class="Identifier">JsonParsingError</span><span class="Other">]</span><span class="Other">,</span> 
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadIOEffect</span><span class="Other">,</span> <span class="Identifier">WriteIOEffect</span><span class="Other">,</span> <span class="Identifier">TimeEffect</span><span class="Other">]</span><span class="Other">.}</span></pre></dt>
+<dd>
+Takes an address and an API key and returns a nicely formatted address.
 
 </dd>
 
@@ -1203,7 +1223,7 @@ Takes an address and returns a nicely formatted address.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small>Made with Nim. Generated: 2015-05-18 12:43:02 UTC</small>
+        <small>Made with Nim. Generated: 2015-05-19 12:51:12 UTC</small>
       </div>
     </div>
   </div>
